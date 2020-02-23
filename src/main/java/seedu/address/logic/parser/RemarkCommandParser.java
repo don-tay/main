@@ -8,7 +8,10 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.RemarkCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Remark;
 
+//@@author don-tay-reused
+//Reused from https://github.com/nus-cs2103-AY1920S1/addressbook-level3/commit/efdcdf0e80cec9489f7b47e3f65824f4688ad8f7#diff-fc19ecee89c3732a62fbc8c840250508
 public class RemarkCommandParser implements Parser<RemarkCommand> {
 
         public RemarkCommand parse(String args) throws ParseException {
@@ -26,6 +29,7 @@ public class RemarkCommandParser implements Parser<RemarkCommand> {
 
             String remark = argMultimap.getValue(PREFIX_REMARK).orElse("");
 
-            return new RemarkCommand(index, remark);
+            return new RemarkCommand(index, new Remark(remark));
         }
 }
+//@@author
