@@ -53,6 +53,18 @@ public class Priority {
         return test.matches(VALID_INTEGER_REGEX);
     }
 
+    /**
+     * Returns a Ui String representation of the priority.
+     * @return String representing the priority level
+     */
+    public String toUiString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = this.priorityLevel; i > 0; i--) {
+            sb.append('!');
+        }
+        return sb.toString();
+    }
+
     @Override
     public String toString() {
         return Integer.toString(priorityLevel);

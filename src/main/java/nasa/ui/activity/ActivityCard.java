@@ -59,7 +59,7 @@ public class ActivityCard extends UiPart<Region> {
         date.setText(activity.getDate().toString());
         note.setText(activity.getNote().toString());
         status.setText(activity.getStatus().toString());
-        priority.setText(activity.getPriority().toString());
+        priority.setText(activity.getPriority().toUiString());
         if (activity instanceof Deadline) {
             Deadline deadline = (Deadline) activity;
             labelForCircle.setText("D");
