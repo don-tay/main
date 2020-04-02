@@ -30,6 +30,8 @@ public class TaskName {
 
     /**
      * Returns true if a given string is a valid task name.
+     * @param test String
+     * @return boolean
      */
     public static boolean isValidTask(String test) {
         return test.matches(VALIDATION_REGEX);

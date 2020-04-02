@@ -46,6 +46,8 @@ public class Priority {
 
     /**
      * Returns true if a given priority level string is in the valid integer range of 1 to 5.
+     * @param test String
+     * @return boolean
      */
     public static boolean isValidPriorityValue(String test) {
         return test.matches(VALID_INTEGER_REGEX);

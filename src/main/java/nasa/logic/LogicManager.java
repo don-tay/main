@@ -16,6 +16,7 @@ import nasa.logic.parser.exceptions.ParseException;
 import nasa.model.Model;
 import nasa.model.ReadOnlyNasaBook;
 import nasa.model.module.Module;
+import nasa.model.module.ModuleCode;
 import nasa.storage.Storage;
 
 /**
@@ -65,6 +66,10 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Module> getFilteredModuleList() {
         return model.getFilteredModuleList();
+    }
+
+    public Module getModule(ModuleCode moduleCode) {
+        return model.getModule(moduleCode);
     }
 
     @Override

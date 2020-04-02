@@ -24,7 +24,8 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonNasaBookStorage nasaBookStorage = new JsonNasaBookStorage(getTempFilePath("ab"), getTempFilePath("cd"));
+        JsonNasaBookStorage nasaBookStorage = new JsonNasaBookStorage(getTempFilePath("ab"),
+                getTempFilePath("cd"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         storageManager = new StorageManager(nasaBookStorage, userPrefsStorage);
     }

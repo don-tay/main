@@ -24,6 +24,7 @@ public class JsonAdaptedHistory {
 
     /**
      * Construct History with details of module list.
+     * @param moduleList List
      */
     @JsonCreator
     public JsonAdaptedHistory(@JsonProperty("moduleList") List<List<JsonAdaptedModule>> moduleList) {
@@ -34,6 +35,7 @@ public class JsonAdaptedHistory {
 
     /**
      * Converts a given module list for Jackson use.
+     * @param source ReadOnlyHistory
      */
     public JsonAdaptedHistory(ReadOnlyHistory<UniqueModuleList> source) {
         moduleList.addAll(source.getModuleListHistory().stream()
@@ -44,6 +46,7 @@ public class JsonAdaptedHistory {
 
     /**
      * Converts Jackson to adapted history object.
+     * @return HistoryBook
      */
     public HistoryBook<UniqueModuleList> toModelType() throws IllegalValueException {
         final List<UniqueModuleList> historyList = new ArrayList<>();

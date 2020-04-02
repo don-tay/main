@@ -12,7 +12,8 @@
       "priority" : "1",
       "dueDate" : "20-03-2020 02:30",
       "startDate" : "",
-      "endDate" : ""
+      "endDate" : "",
+      "schedule" : "0,29-03-2020 15:25,29-03-2020 15:25"
     } ]
   }, {
     "moduleCode" : "CS2106",
@@ -26,7 +27,8 @@
       "priority" : "1",
       "dueDate" : "20-03-2020 02:30",
       "startDate" : "",
-      "endDate" : ""
+      "endDate" : "",
+      "schedule" : "0,29-03-2020 15:25,29-03-2020 15:25"
     } ]
   }]
 }

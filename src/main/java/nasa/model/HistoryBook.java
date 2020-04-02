@@ -8,7 +8,7 @@ import nasa.model.history.ModuleListHistory;
 
 /**
  * Construct a class to store undo and redo history.
- * @param <T>
+ * @param <T> Type
  */
 public class HistoryBook<T> implements ReadOnlyHistory<T> {
 
@@ -29,7 +29,7 @@ public class HistoryBook<T> implements ReadOnlyHistory<T> {
 
     /**
      * Reset history with new data.
-     * @param newData
+     * @param newData Date
      */
     public void resetData(ReadOnlyHistory<T> newData) {
         requireNonNull(newData);
@@ -45,8 +45,13 @@ public class HistoryBook<T> implements ReadOnlyHistory<T> {
         this.moduleListHistory = moduleListHistory;
     }
 
+    /**
+     * Add recent action into history.
+     * @param item T
+     */
     public void add(T item) {
         moduleListHistory.push(item);
+        moduleListHistoryCollector.resetItem();
     }
 
     /**

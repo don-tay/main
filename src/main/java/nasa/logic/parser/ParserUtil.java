@@ -40,9 +40,6 @@ public class ParserUtil {
      */
     public static Index parseZeroIndex(String zeroBasedIndex) throws ParseException {
         String trimmedIndex = zeroBasedIndex.trim();
-        if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
-            throw new ParseException(MESSAGE_INVALID_INDEX);
-        }
         return Index.fromZeroBased(Integer.parseInt(trimmedIndex));
     }
 

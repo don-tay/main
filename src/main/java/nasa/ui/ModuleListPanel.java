@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -45,13 +44,9 @@ public class ModuleListPanel extends UiPart<Region> {
             super.updateItem(module, empty);
             noModules.setManaged(false);
 
-
             prefWidthProperty().bind(moduleListView.widthProperty()
                     .divide(moduleListView.getItems().size()).subtract(5));
             //TODO Fit modules to screen
-            minWidthProperty().set(200);
-            setMaxWidth(Control.USE_PREF_SIZE);
-
             if (empty || module == null) {
                 setGraphic(null);
                 setText(null);

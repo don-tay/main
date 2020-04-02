@@ -17,6 +17,9 @@ public class Lesson extends Activity {
 
     /**
      * Initialise Lessons with default status and priority.
+     * @param name Name
+     * @param startDate Date
+     * @param endDate Date
      */
     public Lesson(Name name, Date startDate, Date endDate) {
         super(name);
@@ -26,6 +29,13 @@ public class Lesson extends Activity {
         checkArgument(isValidLesson(this), INVALID_LESSON);
     }
 
+    /**
+     * Initialise Lesson with a note.
+     * @param name Name
+     * @param note Note
+     * @param startDate Date
+     * @param endDate Date
+     */
     public Lesson(Name name, Note note, Date startDate, Date endDate) {
         super(name, note);
         requireAllNonNull(startDate, endDate);
@@ -33,6 +43,14 @@ public class Lesson extends Activity {
         this.endDate = endDate;
     }
 
+    /**
+     * Initialise Lesson with priority.
+     * @param name Name
+     * @param note Note
+     * @param priority Priority
+     * @param startDate Date
+     * @param endDate Date
+     */
     public Lesson(Name name, Note note, Priority priority, Date startDate, Date endDate) {
         super(name, note, priority);
         requireAllNonNull(startDate, endDate);
@@ -43,6 +61,13 @@ public class Lesson extends Activity {
     /**
      * Initialise Deadlines with a particular unique {@code name}.
      * Every field must be present and not null.
+     * @param name Name
+     * @param date Date
+     * @param note Note
+     * @param status Status
+     * @param priority Priority
+     * @param startDate Date
+     * @param endDate Date
      */
     public Lesson(Name name, Date date, Note note, Status status, Priority priority, Date startDate, Date endDate) {
         super(name, date, note, status, priority);

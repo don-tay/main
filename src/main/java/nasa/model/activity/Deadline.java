@@ -38,6 +38,12 @@ public class Deadline extends Activity {
     /**
      * Initialise Deadlines with a particular unique {@code name}.
      * Every field must be present and not null.
+     * @param name Name
+     * @param date Date
+     * @param note Note
+     * @param status Status
+     * @param priority Priority
+     * @param dueDate Date
      */
     public Deadline(Name name, Date date, Note note, Status status, Priority priority, Date dueDate) {
         super(name, date, note, status, priority);
@@ -53,15 +59,27 @@ public class Deadline extends Activity {
         this.updateStatus();
     }
 
+    /**
+     * Return the difference in due date and date of creation.
+     * @return int
+     */
     public int getDifferenceInDay() {
-        return (int) getDate().getDifference(dueDate)[0];
+        return dueDate.getDifference(getDate());
+    }
+
+    public int getDifferenceInDate() {
+        return dueDate.getDifference(Date.now());
     }
 
     /**
-     * Get days remaining for the task.
+     * Calculate the percentage base on comparison.
+     * @param toCompare Date
+     * @return int
      */
-    public int getDaysRemaining() {
-        return (int) this.dueDate.getDifference(Date.now())[0];
+    public int percentage(Date toCompare) {
+        int difference = toCompare.getDifference(getDate());
+        double result = 100 * ((double) difference / getDifferenceInDay());
+        return difference == 0 ? 0 : (int) result;
     }
 
     @Override
@@ -77,8 +95,10 @@ public class Deadline extends Activity {
 
     @Override
     public Deadline regenerate() {
-        if (super.getSchedule().update()) {
+        super.getSchedule().update();
+        if (Date.now().isAfter(dueDate)) {
             setDueDate(getSchedule().getDate().addDaysToCurrDate(getDifferenceInDay()));
+            super.setDate(super.getSchedule().getDate());
             setStatus(Status.ONGOING);
         }
         return this;

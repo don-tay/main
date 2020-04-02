@@ -511,3 +511,11 @@
 -fx-background-fill: black, white ;
 -fx-background-insets: 0, 0 1 1 0 ;
 }
+
+.highlight_label {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-size: 11;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}

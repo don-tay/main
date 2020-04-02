@@ -2,6 +2,10 @@ package nasa.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static nasa.commons.core.Messages.MESSAGE_ACTIVITY_LISTED_OVERVIEW;
+import static nasa.model.Model.PREDICATE_SHOW_ALL_ACTIVITIES;
+import static nasa.model.Model.PREDICATE_SHOW_ALL_MODULES;
+
+import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 
@@ -9,6 +13,7 @@ import nasa.logic.commands.exceptions.CommandException;
 import nasa.model.Model;
 import nasa.model.activity.ActivityContainsKeyWordsPredicate;
 import nasa.model.module.Module;
+import nasa.model.module.NameContainsKeywordsPredicate;
 
 /**
  * Finds and lists all activities in NASA whose name contains any of the argument keywords.
@@ -24,9 +29,15 @@ public class FindCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " assignment lab tutorial";
 
-    private final ActivityContainsKeyWordsPredicate predicate;
+    public static final String MESSAGE_REFRESH = "Screen has been refreshed.";
 
-    public FindCommand(ActivityContainsKeyWordsPredicate predicate) {
+    private final Predicate predicate;
+
+    public FindCommand() {
+        this.predicate = null;
+    }
+
+    public FindCommand(Predicate predicate) {
         this.predicate = predicate;
     }
 
@@ -34,9 +45,18 @@ public class FindCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         // TODO add the necessary implementation once model is done
-        model.updateFilteredActivityList(predicate);
-        return new CommandResult(String.format(MESSAGE_ACTIVITY_LISTED_OVERVIEW,
-            getNumberOfFilteredActivities(model.getFilteredModuleList())));
+        if (predicate instanceof NameContainsKeywordsPredicate) {
+            model.updateFilteredModuleList(predicate);
+            return new CommandResult("SUCCESS MODULE DISPLAYED.");
+        } else if (predicate instanceof ActivityContainsKeyWordsPredicate) {
+            model.updateFilteredActivityList(predicate);
+            return new CommandResult(String.format(MESSAGE_ACTIVITY_LISTED_OVERVIEW,
+                    getNumberOfFilteredActivities(model.getFilteredModuleList())));
+        } else {
+            model.updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
+            model.updateFilteredActivityList(PREDICATE_SHOW_ALL_ACTIVITIES);
+            return new CommandResult(MESSAGE_REFRESH);
+        }
     }
 
     private int getNumberOfFilteredActivities(ObservableList<Module> moduleList) {

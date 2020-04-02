@@ -15,12 +15,14 @@ public interface UserPrefsStorage {
 
     /**
      * Returns the file path of the UserPrefs data file.
+     * @return Path
      */
     Path getUserPrefsFilePath();
 
     /**
      * Returns UserPrefs data from storage.
      *   Returns {@code Optional.empty()} if storage file is not found.
+     * @return Optional
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException if there was any problem when reading from the storage.
      */

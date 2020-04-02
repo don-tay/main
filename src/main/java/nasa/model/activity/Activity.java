@@ -138,8 +138,8 @@ public abstract class Activity implements Regenerable<Activity> {
 
     /**
      * Returns true if both activities of the same name, note and date.
-     * @param otherActivity
-     * @return
+     * @param otherActivity Activity
+     * @return boolean
      */
     public boolean isSameActivity(Activity otherActivity) {
         if (otherActivity == this) {

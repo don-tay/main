@@ -239,6 +239,30 @@ Examples:
 ** `repeat m/CS3233 a/SEA Group Programming Assignment r/2` to regenerate twice weekly.
 ** `repeat m/CS3233 a/SEA Group Programming Assignment r/3` to regenerate monthly.
 
+=== Quote: `quote`
+Allows user to generate a quote message. Aims to lighten the user day!
+Format: `quote`
+
+Example :
+
+** `quote` : “Limitations live only in our minds. But if we use our imaginations, our possibilities become limitless.” – Jamie Paolinetti
+
+=== Undo: `undo`
+Allows user to undo previous action.
+Format: `undo`
+
+Example :
+
+** `undo` : "undo last action"
+
+=== Redo: `redo`
+Allows user to redo previous action.
+Format: `redo`
+
+Example :
+
+** `redo` : "redo last action" else "no last action to redo"
+
 === Export to calendar `export` `[coming in v2.0]`
 Exports all module activity-lists onto a calendar (.ics format) for users. +
 Format: `export`
@@ -301,6 +325,18 @@ _{explain how the user can enable/disable data encryption}_
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
 the data of your previous NASA folder.
 
+*Q*: Since every dateline is different how automation helps to keep track of my new dateline? +
+*A*: The new dateline will be base on the interval when you first initialise the deadline activity. For example,
+date of creating an activity is on 16-03-2020 00:00 and due date is on 20-03-2020 00:00. If you set repeat for a week,
+the next due date will be 16 + 7 + 4 which is 27-03-2020 00:00.
+
+*Q*: What is the purpose of an event? +
+*A*: An event can be CCAs, bookings, etc.
+
+
+=== Edit checklist item of activity
+To edit checklist item, add the new checklist item with `chadd` before deleting the old checklist item with `chdel`.
+=======
 *Q*: How do I populate NASA with an activity (ie. Deadline, Event, Lesson) that occur regularly (eg. weekly)? +
 *A*: Use the automate command (see section ‘Automation’)
 
@@ -316,22 +352,27 @@ the data of your previous NASA folder.
 *Q*: There is an unreported bug. What should I do? +
 *A*: Please contact us here! We will respond as soon as possible.
 
-
 == Command Summary
+=======
 .List of all commands
 [cols="1,3"]
 |===
 |Command|Syntax
 
-| *add* |`add m/MODULE_CODE n/MODULE_NAME`
-| *deadline/event/lesson* |`TYPE_OF_ACTIVITY m/MODULE_CODE d/DATE a/ACTIVITY_NAME [p/PRIORITY] [n/NOTES]`
-| *clear* | `clear`
-| *delete* | `delete m/MODULE_CODE INDEX`
-| *edit* | `edit INDEX m/MODULE_CODE [d/DATE] [n/NOTES] [p/PRIORITY] [t/ACTIVITY_NAME]`
-| *find* | `find KEYWORD [MORE_KEYWORDS]`
-| *list* | `list [m/MODULE_CODE...]`
-| *help* | `help`
-| *export* | `export`
-| *shortcut* | `shortcut s/SHORTCUT c/COMMAND`
-| *statistics* | `statistics [tp/TIME_PERIOD]`
-
+| *MAdd* |`add m/MODULE_CODE n/MODULE_NAME`
+| *TAdd* |`TYPE_OF_ACTIVITY m/MODULE_CODE d/DATE a/ACTIVITY_NAME [p/PRIORITY] [n/NOTES]`
+| *Clear* | `clear`
+| *Delete* | `delete m/MODULE_CODE INDEX`
+| *Edit* | `edit INDEX m/MODULE_CODE [d/DATE] [n/NOTES] [p/PRIORITY] [t/ACTIVITY_NAME]`
+| *Find* | `find KEYWORD [MORE_KEYWORDS]`
+| *List* | `list [m/MODULE_CODE...]`
+| *Help* | `help`
+| *Export* | `export`
+| *Shortcut* | `shortcut s/SHORTCUT c/COMMAND`
+| *Statistics* | `statistics [tp/TIME_PERIOD]`
+| *Chadd* | `chadd ACTIVITY_ID CHECKLIST_ITEM`
+| *Chdel* | `chdel ACTIVITY_ID CHECKLIST_ID`
+| *Repeat* | `repeat m/MODULE_CODE a/ACTIVITYNAME r/INDEX`
+| *Quote* | `quote`
+| *Undo* | `undo`
+| *Redo* | `redo`

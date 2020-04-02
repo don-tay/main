@@ -1,6 +1,7 @@
 package nasa.model.activity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,13 @@ class ScheduleTest {
     final Schedule schedule = new Schedule(date);
 
     @Test
-    void initialisation_test() {
+    void initialisation() {
+        assertEquals(date, schedule.getDate());
+        assertEquals(0, schedule.getType());
+    }
+
+    @Test
+    void checkChangeType() {
         schedule.setType(1);
         //System.out.println(schedule.getDate());
         assertTrue(Date.now().isBefore(schedule.getDate()));
@@ -26,6 +33,12 @@ class ScheduleTest {
 
         schedule.cancel();
         assertEquals(temp, schedule.getDate());
+    }
+
+    @Test
+    void checkWrongSchedule() {
+        assertThrows(IllegalArgumentException.class, () -> schedule.setType(-1));
+        assertThrows(IllegalArgumentException.class, () -> schedule.setType(4));
     }
 
 }

@@ -39,6 +39,7 @@ public class NasaBook implements ReadOnlyNasaBook {
 
     /**
      * Creates a NasaBook using the Modules in the {@code toBeCopied}
+     * @param toBeCopied ReadOnlyNasaBook
      */
     public NasaBook(ReadOnlyNasaBook toBeCopied) {
         this();
@@ -46,24 +47,30 @@ public class NasaBook implements ReadOnlyNasaBook {
     }
 
     /**
-     * Replaces the contents of the activities of module {@moduleCode} with {@code activities}
+     * Replaces the contents of the activities of module {@code moduleCode} with {@code activities}
      * {@code activities} must not contain duplicate activities.
+     * @param module Module
+     * @return UniqueActivityList
      */
     public UniqueActivityList getActivities(Module module) {
         return moduleList.getActivities(module);
     }
 
     /**
-     * Replaces the contents of the activities of module {@moduleCode} with {@code activities}
+     * Replaces the contents of the activities of module {@code moduleCode} with {@code activities}
      * {@code activities} must not contain duplicate activities.
+     * @param moduleCode ModuleCode
+     * @return UniqueActivityList
      */
     public UniqueActivityList getActivities(ModuleCode moduleCode) {
         return moduleList.getActivities(moduleCode);
     }
 
     /**
-     * Replaces the contents of the activities of module {@moduleCode} with {@code activities}
+     * Replaces the contents of the activities of module {@code moduleCode} with {@code activities}
      * {@code activities} must not contain duplicate activities.
+     * @param module Module
+     * @param activities List
      */
     public void setActivities(Module module, List<Activity> activities) {
         Module toEditModule = moduleList.getModule(module);
@@ -72,8 +79,10 @@ public class NasaBook implements ReadOnlyNasaBook {
     }
 
     /**
-     * Replaces the contents of the activities of module {@moduleCode} with {@code activities}
+     * Replaces the contents of the activities of module {@code moduleCode} with {@code activities}
      * {@code activities} must not contain duplicate activities.
+     * @param module ModuleCode
+     * @param activities List
      */
     public void setActivities(ModuleCode module, List<Activity> activities) {
         Module toEditModule = moduleList.getModule(module);
@@ -98,8 +107,10 @@ public class NasaBook implements ReadOnlyNasaBook {
     }
 
     /**
-     * Add a single activity to module {@moduleCode} with {@code activity}
+     * Add a single activity to module {@code moduleCode} with {@code activity}
      * {@code activity} must not contain duplicate activities.
+     * @param module Module
+     * @param activity Activity
      */
     public void addActivity(Module module, Activity activity) {
         requireNonNull(activity);
@@ -110,8 +121,10 @@ public class NasaBook implements ReadOnlyNasaBook {
     }
 
     /**
-     * Add a single activity to module {@moduleCode} with {@code activity}
+     * Add a single activity to module {@code moduleCode} with {@code activity}
      * {@code activity} must not contain duplicate activities.
+     * @param activity Activity
+     * @param moduleCode ModuleCode
      */
     public void addActivity(ModuleCode moduleCode, Activity activity) {
         requireNonNull(activity);
@@ -123,6 +136,8 @@ public class NasaBook implements ReadOnlyNasaBook {
     /**
      * Remove a single activity from module {@code module} with {@code activity}
      * {@code activity} must exist in the list.
+     * @param activity Activity
+     * @param module Module
      */
     public void removeActivity(Module module, Activity activity) {
         requireNonNull(activity);
@@ -135,6 +150,8 @@ public class NasaBook implements ReadOnlyNasaBook {
     /**
      * Remove a single activity from module {@code module} with {@code activity}
      * {@code activity} must exist in the list.
+     * @param activity Activity
+     * @param moduleCode ModuleCode
      */
     public void removeActivity(ModuleCode moduleCode, Activity activity) {
         requireNonNull(activity);
@@ -155,6 +172,7 @@ public class NasaBook implements ReadOnlyNasaBook {
     /**
      * Remove activity by index.
      * @param index must not be negative.
+     * @param module Module
      */
     public void removeActivityByIndex(Module module, Index index) {
         requireNonNull(module);
@@ -166,6 +184,7 @@ public class NasaBook implements ReadOnlyNasaBook {
     /**
      * Remove activity by index.
      * @param index must not be negative.
+     * @param moduleCode ModuleCode
      */
     public void removeActivityByIndex(ModuleCode moduleCode, Index index) {
         requireNonNull(moduleCode);
@@ -176,6 +195,9 @@ public class NasaBook implements ReadOnlyNasaBook {
 
     /**
      * Check if it has activity {@code activity} in {@code module}
+     * @param activity Activity
+     * @param module Module
+     * @return boolean
      */
     public boolean hasActivity(Module module, Activity activity) {
         requireNonNull(activity);
@@ -186,6 +208,9 @@ public class NasaBook implements ReadOnlyNasaBook {
 
     /**
      * Check if it has activity {@code activity} in {@code module}
+     * @param activity Activity
+     * @param moduleCode ModuleCode
+     * @return boolean
      */
     public boolean hasActivity(ModuleCode moduleCode, Activity activity) {
         requireNonNull(activity);
@@ -195,7 +220,21 @@ public class NasaBook implements ReadOnlyNasaBook {
     }
 
     /**
+     * Check if it has activity name {@code activity} in {@code module}
+     * @param activity Name
+     * @param moduleCode ModuleCode
+     * @return boolean
+     */
+    public boolean hasActivity(ModuleCode moduleCode, Name activity) {
+        requireNonNull(activity);
+
+        Module toEditModule = moduleList.getModule(moduleCode);
+        return toEditModule.hasActivity(activity);
+    }
+
+    /**
      * Resets the existing data of this {@code NasaBook} with {@code newData}
+     * @param newData ReadOnlyNasaBook
      */
     public void resetData(ReadOnlyNasaBook newData) {
         requireNonNull(newData);
@@ -207,6 +246,8 @@ public class NasaBook implements ReadOnlyNasaBook {
 
     /**
      * Returns true if an module has the same identity as {@code module} exits in NasaBook.
+     * @param module Module
+     * @return boolean
      */
     public boolean hasModule(Module module) {
         requireNonNull(module);
@@ -215,6 +256,8 @@ public class NasaBook implements ReadOnlyNasaBook {
 
     /**
      * Returns true if an module has the same identity as {@code module} exits in NasaBook.
+     * @param moduleCode ModuleCode
+     * @return boolean
      */
     public boolean hasModule(ModuleCode moduleCode) {
         requireNonNull(moduleCode);
@@ -224,6 +267,7 @@ public class NasaBook implements ReadOnlyNasaBook {
     /**
      * Adds an module to the NasaBook.
      * The module must not already exist in the NasaBook
+     * @param module Module
      */
     public void addModule(Module module) {
         moduleList.add(module);
@@ -232,6 +276,8 @@ public class NasaBook implements ReadOnlyNasaBook {
     /**
      * Adds an module to the NasaBook.
      * The module must not already exist in the NasaBook
+     * @param moduleCode ModuleCode
+     * @param moduleName ModuleName
      */
     public void addModule(ModuleCode moduleCode, ModuleName moduleName) {
         moduleList.add(moduleCode, moduleName);
@@ -241,6 +287,8 @@ public class NasaBook implements ReadOnlyNasaBook {
      * Replaces the given module {@code target} in the list with {@code editedActivity}.
      * {@code target} must exit in the NasaBook.
      * The module identity of {@code editedActivity} must not be the same as another existing module in Nasa Book.
+     * @param target Module
+     * @param editedActivity Module
      */
     public void setModule(Module target, Module editedActivity) {
         requireNonNull(editedActivity);
@@ -252,6 +300,8 @@ public class NasaBook implements ReadOnlyNasaBook {
      * Replaces the given module {@code target} in the list with {@code editedActivity}.
      * {@code target} must exit in the NasaBook.
      * The module identity of {@code editedActivity} must not be the same as another existing module in Nasa Book.
+     * @param target Module
+     * @param editedActivity Module
      */
     public void setModule(ModuleCode target, Module editedActivity) {
         requireNonNull(editedActivity);
@@ -306,6 +356,7 @@ public class NasaBook implements ReadOnlyNasaBook {
     /**
      * Removes {@code key} from this {@code NasaBook}.
      * {@code key} must exist in the Nasa Book.
+     * @param key Module
      */
     public void removeModule(Module key) {
         moduleList.remove(key);
@@ -314,6 +365,7 @@ public class NasaBook implements ReadOnlyNasaBook {
     /**
      * Removes {@code key} from this {@code NasaBook}.
      * {@code key} must exist in the Nasa Book.
+     * @param key ModuleCode
      */
     public void removeModule(ModuleCode key) {
         moduleList.remove(key);
@@ -332,12 +384,20 @@ public class NasaBook implements ReadOnlyNasaBook {
                         .forEach(y -> y.regenerate()));
     }
 
-    public void setSchedule(ModuleCode module, Name activity, Index type) {
-        moduleList.getModule(module).getActivityByName(activity).setSchedule(type.getZeroBased());
+    public boolean setSchedule(ModuleCode module, Name activity, Index type) {
+        if (hasModule(module)) {
+            Module item = moduleList.getModule(module);
+            if (item.hasActivity(activity)) {
+                moduleList.getModule(module).getActivityByName(activity).setSchedule(type.getZeroBased());
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
      * Return a new NasaBook, to avoid pointing to the same data when testing.
+     * @return NasaBook
      */
     public NasaBook deepCopyNasaBook() {
         NasaBook newNasaBook = new NasaBook();
@@ -386,5 +446,9 @@ public class NasaBook implements ReadOnlyNasaBook {
     @Override
     public int hashCode() {
         return moduleList.hashCode();
+    }
+
+    public Module getModule(ModuleCode moduleCode) {
+        return moduleList.getModule(moduleCode);
     }
 }

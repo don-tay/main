@@ -12,11 +12,13 @@ public interface ReadOnlyNasaBook {
 
     /**
      * Gets the underlying {@code UniqueModuleList} from the NasaBook.
+     * @return UniqueModuleList
      */
     UniqueModuleList getUniqueModuleList();
     /**
      * Returns an unmodifiable view of the modules list.
      * This list will not contain any duplicate modules.
+     * @return ObservableList
      */
     ObservableList<Module> getModuleList();
 
