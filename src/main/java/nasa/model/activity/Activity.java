@@ -192,6 +192,13 @@ public abstract class Activity implements Regenerable<Activity> {
     }
 
     /**
+     * Sets the task to undone.
+     */
+    public void setUndone() {
+        status = Status.ONGOING;
+    }
+
+    /**
      * Retrieve the done status of the activity.
      * @return boolean, true means done, false means not
      */

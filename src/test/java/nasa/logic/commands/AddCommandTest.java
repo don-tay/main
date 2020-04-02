@@ -321,6 +321,11 @@ public class AddCommandTest {
 
         }
 
+        @Override
+        public Module getModule(ModuleCode moduleCode) {
+            return new Module(new ModuleCode("CS1231"), new ModuleName("Test"));
+        }
+
         /*
         @Override
         public boolean hasModule(Module module) {
@@ -480,6 +485,11 @@ public class AddCommandTest {
         @Override
         public void sortActivityList(SortMethod sortMethod) {
 
+        }
+
+        @Override
+        public Module getModule(ModuleCode moduleCode) {
+            return new Module(new ModuleCode("CS1231"), new ModuleName("Test"));
         }
     }
 

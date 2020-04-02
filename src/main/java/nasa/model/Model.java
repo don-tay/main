@@ -192,4 +192,5 @@ public interface Model {
     void undoHistory();
     void redoHistory();
     void setSchedule(ModuleCode module, Name activity, Index type);
+    Module getModule(ModuleCode moduleCode);
 }
