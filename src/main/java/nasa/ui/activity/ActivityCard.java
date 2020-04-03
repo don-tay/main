@@ -1,5 +1,6 @@
 package nasa.ui.activity;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
@@ -60,6 +61,9 @@ public class ActivityCard extends UiPart<Region> {
         note.setText(activity.getNote().toString());
         status.setText(activity.getStatus().toString());
         priority.setText(activity.getPriority().toUiString());
+
+        setPriorityColour();
+
         if (activity instanceof Deadline) {
             Deadline deadline = (Deadline) activity;
             labelForCircle.setText("D");
@@ -78,6 +82,30 @@ public class ActivityCard extends UiPart<Region> {
         } else {
             labelForCircle.setText("L");
             dateline.setVisible(false);
+        }
+    }
+
+    private void setPriorityColour() {
+        ObservableList<String> priorityStyle = priority.getStyleClass();
+        switch (priority.getText()) {
+        case "!":
+            priority.setStyle("-fx-text-fill:#00bc2f;");
+            break;
+        case "!!":
+            priority.setStyle("-fx-text-fill:#3dba00;");
+            break;
+        case "!!!":
+            priority.setStyle("-fx-text-fill:#d0d000;");
+            break;
+        case "!!!!":
+            priority.setStyle("-fx-text-fill:#e1b400;");
+            break;
+        case "!!!!!":
+            priority.setStyle("-fx-text-fill:#e80303;");
+            break;
+        default:
+            priority.setStyle("");
+            break;
         }
     }
 

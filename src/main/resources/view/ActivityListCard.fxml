@@ -1,44 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Group?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<VBox fx:id="activityPane" spacing="15.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="activityPane" prefHeight="267.0" prefWidth="128.0" spacing="15.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <padding>
-      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
    </padding>
-   <Group fx:id="type">
-      <Circle fx:id = "circle" fill="DODGERBLUE" radius="19.0" stroke="BLACK" strokeType="INSIDE"/>
-      <Label fx:id = "labelForCircle" layoutX="-5.0" layoutY="-8.0" text="\$code"/>
-   </Group>
-   <Label fx:id="name" styleClass="activity_big_label" text="\$code" wrapText="true"/>
+   <HBox prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <Group fx:id="type">
+            <Circle fx:id="circle" fill="DODGERBLUE" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="labelForCircle" layoutX="-5.0" layoutY="-8.0" text="\$code" />
+         </Group>
+         <Label fx:id="priority" alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="priority_label" text="\\$priority" textAlignment="RIGHT" textFill="#02bc0b" wrapText="true">
+            <minWidth>
+               <Region fx:constant="USE_PREF_SIZE" />
+            </minWidth>
+            <font>
+               <Font name="Chalkduster" size="17.0" />
+            </font>
+         </Label>
+      </children>
+   </HBox>
+   <Label fx:id="name" styleClass="activity_big_label" text="\$code" wrapText="true" />
    <Label fx:id="dateline" styleClass="highlight_label" text="\$code" wrapText="true">
       <minWidth>
-         <Region fx:constant="USE_PREF_SIZE"/>
+         <Region fx:constant="USE_PREF_SIZE" />
       </minWidth>
    </Label>
    <Label fx:id="note" styleClass="activity_small_label" text="\$code" wrapText="true">
       <minWidth>
-         <Region fx:constant="USE_PREF_SIZE"/>
+         <Region fx:constant="USE_PREF_SIZE" />
       </minWidth>
    </Label>
    <Label fx:id="date" styleClass="activity_small_label" text="\$code" wrapText="true">
       <minWidth>
-         <Region fx:constant="USE_PREF_SIZE"/>
+         <Region fx:constant="USE_PREF_SIZE" />
       </minWidth>
    </Label>
    <Label fx:id="status" styleClass="activity_small_label" text="\$code" wrapText="true">
       <minWidth>
-         <Region fx:constant="USE_PREF_SIZE"/>
-      </minWidth>
-   </Label>
-   <Label fx:id="priority" styleClass="activity_small_label" text="\$code" wrapText="true">
-      <minWidth>
-         <Region fx:constant="USE_PREF_SIZE"/>
+         <Region fx:constant="USE_PREF_SIZE" />
       </minWidth>
    </Label>
 </VBox>
