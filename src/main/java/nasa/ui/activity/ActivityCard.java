@@ -1,6 +1,5 @@
 package nasa.ui.activity;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
@@ -85,8 +84,10 @@ public class ActivityCard extends UiPart<Region> {
         }
     }
 
+    /**
+     * Sets font colour of the priority indicator.
+     */
     private void setPriorityColour() {
-        ObservableList<String> priorityStyle = priority.getStyleClass();
         switch (priority.getText()) {
         case "!":
             priority.setStyle("-fx-text-fill:#00bc2f;");
