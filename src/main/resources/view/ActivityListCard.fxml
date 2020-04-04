@@ -5,9 +5,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 
-<VBox fx:id="activityPane" prefHeight="267.0" prefWidth="128.0" spacing="15.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="activityPane" prefHeight="267.0" prefWidth="321.0" spacing="15.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <padding>
       <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
    </padding>
@@ -17,13 +16,11 @@
             <Circle fx:id="circle" fill="DODGERBLUE" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
             <Label fx:id="labelForCircle" layoutX="-5.0" layoutY="-8.0" text="\$code" />
          </Group>
-         <Label fx:id="priority" alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="priority_label" text="\\$priority" textAlignment="RIGHT" textFill="#02bc0b" wrapText="true">
+         <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+         <Label fx:id="priority" alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="priority_label" text="\\$priority" textAlignment="RIGHT" wrapText="true">
             <minWidth>
                <Region fx:constant="USE_PREF_SIZE" />
             </minWidth>
-            <font>
-               <Font name="Chalkduster" size="17.0" />
-            </font>
          </Label>
       </children>
    </HBox>

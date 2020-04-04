@@ -90,10 +90,10 @@ public class ActivityCard extends UiPart<Region> {
     private void setPriorityColour() {
         switch (priority.getText()) {
         case "!":
-            priority.setStyle("-fx-text-fill:#00bc2f;");
+            priority.setStyle("-fx-text-fill:#00bc6b;");
             break;
         case "!!":
-            priority.setStyle("-fx-text-fill:#3dba00;");
+            priority.setStyle("-fx-text-fill:#85ba00;");
             break;
         case "!!!":
             priority.setStyle("-fx-text-fill:#d0d000;");

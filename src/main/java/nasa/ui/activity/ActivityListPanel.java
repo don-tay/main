@@ -13,7 +13,7 @@ import nasa.model.activity.Activity;
 import nasa.ui.UiPart;
 
 /**
- * Panel containing the list of modules.
+ * Panel containing the list of activities.
  */
 public class ActivityListPanel extends UiPart<Region> {
     private static final String FXML = "ActivityListPanel.fxml";
@@ -33,7 +33,7 @@ public class ActivityListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Module} using a {@code ModuleCard}.
+     * Custom {@code ListCell} that displays the graphics of an {@code Activity} using an {@code ActivityCard}.
      */
     class ActivityListViewCell extends ListCell<Activity> {
         @Override
