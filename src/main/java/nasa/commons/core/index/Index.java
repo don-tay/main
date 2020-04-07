@@ -46,6 +46,11 @@ public class Index {
     }
 
     @Override
+    public String toString() {
+        return Integer.toString(this.zeroBasedIndex + 1);
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Index // instanceof handles nulls

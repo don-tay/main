@@ -6,7 +6,7 @@
 <HBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <Label fx:id="noModules" maxWidth="Infinity" styleClass="no-modules" minHeight="200"
            maxHeight="Infinity" wrapText="true" alignment="BOTTOM_CENTER"
-           text="No modules added... Use madd m/[MODULE_CODE] n/[MODULE_NAME] to start adding!"
+           text="No modules added... Use add m/[MODULE_CODE] n/[MODULE_NAME] to start adding!"
            HBox.hgrow="ALWAYS">
     </Label>
     <ListView id="module" fx:id="moduleListView" orientation="HORIZONTAL" HBox.hgrow="ALWAYS"/>

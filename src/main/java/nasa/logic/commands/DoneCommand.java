@@ -2,6 +2,8 @@ package nasa.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static nasa.logic.parser.CliSyntax.PREFIX_MODULE;
+import static nasa.model.Model.PREDICATE_SHOW_ALL_ACTIVITIES;
+import static nasa.model.Model.PREDICATE_SHOW_ALL_MODULES;
 
 import nasa.commons.core.index.Index;
 import nasa.logic.commands.exceptions.CommandException;
@@ -19,8 +21,8 @@ public class DoneCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Sets index of activity in module to being done or completed.\n"
-        + "Parameters:" + "INDEX" + PREFIX_MODULE + "MODULE CODE\n"
-        + "Example" + COMMAND_WORD + " 2 " + PREFIX_MODULE + "CS2030";
+        + "Parameters: " + "INDEX " + PREFIX_MODULE + "MODULE CODE\n"
+        + "Example " + COMMAND_WORD + " 2 " + PREFIX_MODULE + "CS2030";
 
     public static final String MESSAGE_SUCCESS = "Activity set to done!";
 
@@ -59,6 +61,9 @@ public class DoneCommand extends Command {
                 throw new CommandException(MESSAGE_ACTIVITY_ALREADY_DONE);
             } else {
                 activity.setDone();
+                model.setActivityByIndex(moduleCode, index, activity);
+                model.updateFilteredModuleList(PREDICATE_SHOW_ALL_MODULES);
+                model.updateFilteredActivityList(index, PREDICATE_SHOW_ALL_ACTIVITIES);
                 return new CommandResult(String.format(MESSAGE_SUCCESS, activity));
             }
         }

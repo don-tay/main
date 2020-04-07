@@ -17,16 +17,20 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** The application should show statistics. */
+    private final boolean statistics;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      * @param feedbackToUser String
      * @param showHelp boolean
      * @param exit boolean
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean statistics) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.statistics = statistics;
     }
 
     /**
@@ -35,7 +39,7 @@ public class CommandResult {
      * @param feedbackToUser String
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, false);
     }
 
     public String getFeedbackToUser() {
@@ -48,6 +52,10 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    public boolean isStatistics() {
+        return statistics;
     }
 
     @Override

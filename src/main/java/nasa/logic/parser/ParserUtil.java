@@ -140,6 +140,19 @@ public class ParserUtil {
     }
 
     /**
+     * Parses {@code String date} into a {@code Date}.
+     * Checks if the string date is of valid form.
+     * @param parameter of the user input
+     * @return String object created based on user input
+     * @throws ParseException
+     */
+    public static String parseStatistics(String parameter) throws ParseException {
+        requireNonNull(parameter);
+        String parameterTrimmed = parameter.trim();
+        return parameter;
+    }
+
+    /**
      * Parses {@code String sortMethod} into a {@code SortMethod}
      * Checks if String sortMethod is correct.
      * @param sortMethod to be used to sort activity list

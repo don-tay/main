@@ -16,6 +16,6 @@ public class UndoCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         model.undoHistory();
-        return new CommandResult(SHOWING_HELP_MESSAGE, false, false);
+        return new CommandResult(SHOWING_HELP_MESSAGE);
     }
 }

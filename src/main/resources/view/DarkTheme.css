@@ -61,16 +61,18 @@
     -fx-background-insets: 0, 0 0 1 0;
     /* -fx-padding: 0.416667em 0.166667em 0.0em 0.833em; /* 5 2 0 10 */
     -fx-padding: 0.416667em 0.166667em 0.0em 0.0em; /* overridden as 5 2 0 0 */
+    -fx-background-color: black;
 }
 
 .tab-pane .tab-header-area .tab-header-background {
     -fx-opacity: 0;
+    -fx-background-color: black;
 }
 
 
 .tab {
     -fx-background-insets: 0 1 0 1,0,0;
-    -fx-padding: 5px 50px;
+    -fx-padding: 2px 50px;
 }
 .tab-pane .tab {
     -fx-background-color: #e6e6e6;
@@ -83,7 +85,7 @@
 .tab .tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: #828282;
-    -fx-font-size: 15px;
+    -fx-font-size: 12px;
     -fx-font-weight: bold;
     -fx-font-family: Helvetica;
 }
@@ -145,7 +147,7 @@
 .list-view {
     -fx-padding: 0;
     -fx-background-color: black;
-    -fx-background-radius: 25;
+    -fx-background-radius: 15px;
 }
 
 .module {
@@ -156,8 +158,7 @@
     -fx-background-radius: 15;
     -fx-label-padding: 0 0 0 0;
     -fx-graphic-text-gap : 0;
-    -fx-padding: 5;
-
+    -fx-padding: 10px;
 }
 
 .list-cell:filled {
@@ -179,6 +180,7 @@
 .list-cell:filled:selected #cardPane {
     -fx-border-color: #3e7b91;
     -fx-border-width: 1;
+    -fx-padding: 10px;
 }
 
 
@@ -415,15 +417,13 @@
     -fx-padding: 10px;
 }
 
-.list-cell:odd #activityPane {
-    -fx-background-color: #C7CEEA;
-
+.activity-pane {
+    -fx-border-width: 0;
+    -fx-background-radius: 15;
+    -fx-padding: 10px;
+    -fx-background-color: orange;
 }
 
-.list-cell:even #activityPane {
-    -fx-background-color:  #B9D6F3;
-
-}
 
 #activityListView {
     -fx-background-color: transparent;

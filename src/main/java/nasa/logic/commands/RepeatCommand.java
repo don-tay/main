@@ -55,10 +55,9 @@ public class RepeatCommand extends Command {
 
         if (model.setSchedule(module, activity, schedule)) {
             return new CommandResult(String.format("%s for %s %s %s", MESSAGE_SUCCESS, module, activity,
-                    schedule.getZeroBased()),
-                    false, false);
+                    schedule.getZeroBased()));
         } else {
-            return new CommandResult(MESSAGE_FAILURE, false, false);
+            return new CommandResult(MESSAGE_FAILURE);
         }
     }
 

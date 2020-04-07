@@ -15,6 +15,6 @@ public class QuoteCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         String quoteMessage = model.quote();
-        return new CommandResult(quoteMessage, false, false);
+        return new CommandResult(quoteMessage);
     }
 }

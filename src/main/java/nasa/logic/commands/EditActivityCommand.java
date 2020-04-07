@@ -85,7 +85,7 @@ public class EditActivityCommand extends Command {
         UniqueActivityList moduleUniqueActivityList = module.getActivities();
 
         if (index.getZeroBased() >= moduleUniqueActivityList.getActivityList().size()) {
-            throw new nasa.logic.commands.exceptions.CommandException(
+            throw new CommandException(
                     Messages.MESSAGE_INVALID_ACTIVITY_DISPLAYED_INDEX);
         }
 
@@ -95,7 +95,7 @@ public class EditActivityCommand extends Command {
         requireNonNull(editedActivity);
 
         if (!activityToEdit.isSameActivity(editedActivity) && model.hasActivity(moduleCode, editedActivity)) {
-            throw new nasa.logic.commands.exceptions.CommandException(MESSAGE_DUPLICATE_ACTIVITY);
+            throw new CommandException(MESSAGE_DUPLICATE_ACTIVITY);
         }
 
         model.setActivityByIndex(moduleCode, index, editedActivity);

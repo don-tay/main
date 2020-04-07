@@ -52,7 +52,34 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 [[Features]]
 == Features
 
-====
+
+=== Keyboard shortcuts
+
+Navigate around NASA using the following keyboard shortcuts.
+
+[%header,cols=2*]
+|===
+|Shortcut
+|Action
+
+|Ctrl + Z
+|Undo last action.
+
+|Ctrl + Shift + Z
+|Redo last action.
+
+|Tab
+|Switch between tabs.
+
+|Up arrow key
+|View previous command.
+
+|Down arrow key
+|View next command.
+|===
+
+
+
 *Command Format*
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `Madd m/MODULE_CODE`, `MODULE_CODE` is a parameter which can be used as `Madd m/CS1231`.
@@ -60,7 +87,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * Items with `…`​ after them can be used multiple times including zero times e.g. `[m/MODULE_CODE]...` means m/CS2103T CS2101 .....
 * Parameters can be in any order.
 * Commands are **non case-sensitive**, unless stated otherwise.
-====
+
 
 === Viewing help : `help`
 
@@ -78,19 +105,22 @@ Examples:
 
 === Adding a activity into a module activity-list: `TYPE_OF_ACTIVITY`
 Adds an activity into the specified module activity-list +
-Format: `TYPE_OF_ACTIVITY m/MODULE_CODE d/DATE a/ACTIVITY_NAME [p/PRIORITY] [n/NOTES]`
+Types of activities available and how to add them are shown in the table below.
 
-** Type of activities include `deadline`, `events` and `lessons`.
-** Deadline are meant for activities that need to be done within a certain time.
-** Events means any related module activities that happen from a time and ends at another time.
-** Lessons are tutorials/classes for the modules and will auto reappear every week.
-** Date format varies! For deadlines: `d/DD-MM-YYYY HH:MM`, for lessons and events: `sd/DD-MM-YYYY HH:MM - DD-MM-YYYY HH:MM ed/DD-MM-YYYY HH:MM - DD-MM-YYYY HH:MM` where sd/ is for start-time and ed/ is for end-time.
-** Default priority is 1 (priority value is from 1 to 5, where 1 is highest priority and 5 is lowest).
+|===
+| Type of activity | Description | Format | Example
+| Deadline | Deadline are activities that need to be completed before a specific deadline | `deadline m/MODULE_CODE d/DATE a/ACTIVITY_NAME [p/PRIORITY] [n/NOTES] | deadline m/CS1020 d/20-05-2020 23:59 a/Assignment 1 p/1 n/Watch lecture 3 and 4 before doing`
+| Lessons  | Lessons are essentially tutorials and lectures that has a duration and are fixed in schedule | `lesson m/MODULE_CODE sd/START_DATE ed/END_DATE [p/PRIORITY] [n/NOTES] | `lesson m/CS1020 a/Tutorial sd/20-05-2020 23:00 ed/20-05-2020 23:59`
+| Events | Events are other activities that has a duration (eg: remedial, examinations, consultations) | `event m/MODULE_CODE sd/START_DATE ed/END_DATE [p/PRIORITY] [n/NOTES]` | `event m/CS2030 sd/20-05-2020 23:00 ed/20-05-2020 23:59 p/1`
+|===
 
-Examples:
-
-** `lesson m/CS1020 a/Tutorial sd/20-02-2020 23:00 ed/20-02-2020 23:59`
-** `deadline m/CS1020 d/20-02-2020 23:59 a/Assignment 1 p/1 n/Watch lecture 3 and 4 before doing`
+[NOTE]
+====
+** It is not allowed to add deadlines past their due dates.
+** Similar to deadlines, it is not allowed to add events and lessons that already passed.
+** Priority has values from 1 to 5, where 1 indicates highest priority and 5 indicates lowest priority.
+** If priority is not specified, the default priority of the activity is set to 1 (highest priority).
+====
 
 === Listing all activities : `list`
 
@@ -118,10 +148,10 @@ Edits the 2nd activity in CS2013T activity-list date to be `12-12-2020 23:59`.
 * `edit 3 m/CS2030 n/Finish LAB level 3 with Generics p/2` +
 Edits the notes and priority of the 3rd activity in CS2030 activity-list to `Finish LAB level 3 with Generics` and `2` respectively.
 
-=== Editing a module: `Medit`
+=== Editing a module: `medit`
 
 Edits and existing module in the NASA application. +
-Format: `Medit m/CS2030 [m/MODULE_CODE] [n/MODULE_NAME]`
+Format: `medit m/CS2030 [m/MODULE_CODE] [n/MODULE_NAME]`
 
 ****
 * Edits an existing module in the application.
@@ -132,13 +162,13 @@ Format: `Medit m/CS2030 [m/MODULE_CODE] [n/MODULE_NAME]`
 ****
 
 Examples:
-* `Medit m/CS2030 m/CS2030S n/Programming Methodology for CS` +
+* `medit m/CS2030 m/CS2030S n/Programming Methodology for CS` +
 Edits the CS2030 module to CS2030S along with its new module name.
 
-=== Locating activities by name: `find`
+=== Locating modules by name: `find`
 
 Finds activities whose names contain any of the given keywords. +
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find a/KEYWORD [MORE_KEYWORDS]`
 
 ****
 * The search is case insensitive. e.g `tutorial` will match `TUTORIAL`
@@ -150,7 +180,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 Examples:
 
-* `find tutorial` +
+* `find a/tutorial` +
 Returns `tutorial 1` and `tutorial 2` and any other activities with name tutorial.
 
 // tag::delete[]
@@ -161,26 +191,26 @@ Format: `delete INDEX m/MODULE_CODE`
 
 ****
 * Deletes the activity at the specified `INDEX` in the specified `MODULE_CODE`.
+* `INDEX` must be specified first before the `MODULE_CODE`
 * The index refers to the index number shown in the activity-list.
 * The index *must be a positive integer* 1, 2, 3, ...
 ****
 
 Examples:
 
-* `list` +
-`delete m/CS2030 2` +
+*`delete 2 m/CS2030` +
 Deletes the 2nd activity in the CS2030 module activity-list.
 
-=== Deleting a module: `Mdelete`
+=== Deleting a module: `mdelete`
 Deletes a module along with its activity-list. +
-Format: `Mdelete m/MODULE_CODE`
+Format: `mdelete m/MODULE_CODE`
 
 ** Deletes the module with MODULE_CODE and also its activity-list
 ** MODULE_CODE must be an existing module
 
 Examples:
 
-** `Mdelete m/CS2030` +
+** `mdelete m/CS2030` +
 Deletes the respective CS2030 module.
 
 === Creating shortcuts: `shortcut` `[coming in v2.0]`
@@ -200,31 +230,28 @@ Adds a shortcut "l" to command list. "l" can now be used in place of list.
 === Generating statistics
 Displays statistics of all activities.
 
-Switch to statistics tab using the TAB key.
+Switch to statistics tab either
+
+    1) using the TAB key
+
+    2) using the command `statistics`
 
 
-Format: `statistics [tp/TIME_PERIOD] [m/MODULE_CODE]`
+Format: `statistics`
+
+*View statistics for specific activity type*
+
+Format: `statistics at/[TYPE_OF_ACTIVITY]`
 
 Customising statistics parameters `[coming in v2.0]`
-** Can add `TIME_PERIOD` of week, month and year to see activities specific to that time period.
-** Can add `MODULE_CODE` to see activities specific to that module.
+** Can add `TYPE_OF_ACTIVITY` to filter statistics by activity type.
 
 Examples:
 
-** `statistics tp/WEEK` +
-Displays activities completed over this week.
+** `statistics at/deadline` +
+Displays statistics for all deadline activities.
 
-** `statistics tp/MONTH` +
-Displays activities completed over this month.
-
-** `statistics m/CS2101` +
-Displays activities completed for CS2101.
-
-** `statistics tp/MONTH m/CS2101` +
-Displays activities completed over this month for CS2101.
-
-
-=== Automating activity: `repeat`
+=== Automating activity: `repeat`  [coming in v2.0]
 Allows user to repeat an activity from a module.
 Format: `repeat m/MODULE_CODE a/ACTIVITY_NAME r/INDEX`
 
@@ -239,7 +266,7 @@ Examples:
 ** `repeat m/CS3233 a/SEA Group Programming Assignment r/2` to regenerate twice weekly.
 ** `repeat m/CS3233 a/SEA Group Programming Assignment r/3` to regenerate monthly.
 
-=== Quote: `quote`
+=== Quote: `quote` [coming in v2.0]
 Allows user to generate a quote message. Aims to lighten the user day!
 Format: `quote`
 
@@ -263,18 +290,14 @@ Example :
 
 ** `redo` : "redo last action" else "no last action to redo"
 
-=== Export to calendar `export` `[coming in v2.0]`
-Exports all module activity-lists onto a calendar (.ics format) for users. +
-Format: `export`
+=== Calendar View
+Allows the user to see the activities onto a calendar.
 
+* Switch to calendar tab using TAB key.
 
 Examples:
 
-image::export_example.png[width="300", align="middle"]
-
-** Activities are listed as calendar events as shown. Full design not confirmed, image courtesy of [https://www.knack.com/templates/event-calendar[knack]]
-
-// end::delete[]
+image::calendar.png[width="300", align="middle"]
 
 === Sort activities `sort`
 Sorts all activities in their respective modules by a specified criteria. +
@@ -359,8 +382,8 @@ To edit checklist item, add the new checklist item with `chadd` before deleting 
 |===
 |Command|Syntax
 
-| *MAdd* |`add m/MODULE_CODE n/MODULE_NAME`
-| *TAdd* |`TYPE_OF_ACTIVITY m/MODULE_CODE d/DATE a/ACTIVITY_NAME [p/PRIORITY] [n/NOTES]`
+| *Add* |`add m/MODULE_CODE n/MODULE_NAME`
+| *Deadline/Event/Lesson* |`TYPE_OF_ACTIVITY m/MODULE_CODE d/DATE a/ACTIVITY_NAME [p/PRIORITY] [n/NOTES]`
 | *Clear* | `clear`
 | *Delete* | `delete m/MODULE_CODE INDEX`
 | *Edit* | `edit INDEX m/MODULE_CODE [d/DATE] [n/NOTES] [p/PRIORITY] [t/ACTIVITY_NAME]`
@@ -368,11 +391,12 @@ To edit checklist item, add the new checklist item with `chadd` before deleting 
 | *List* | `list [m/MODULE_CODE...]`
 | *Help* | `help`
 | *Export* | `export`
+| *Medit* | `medit m/MODULE_CODE [m/MODULE_CODE] [n/MODULE_NAME]`
+| *Delete* | `mdelete m/MODULE_CODE`
 | *Shortcut* | `shortcut s/SHORTCUT c/COMMAND`
-| *Statistics* | `statistics [tp/TIME_PERIOD]`
-| *Chadd* | `chadd ACTIVITY_ID CHECKLIST_ITEM`
-| *Chdel* | `chdel ACTIVITY_ID CHECKLIST_ID`
+| *Statistics* | `statistics [at/TYPE_OF_ACTIVITY]`
 | *Repeat* | `repeat m/MODULE_CODE a/ACTIVITYNAME r/INDEX`
 | *Quote* | `quote`
 | *Undo* | `undo`
 | *Redo* | `redo`
+|===

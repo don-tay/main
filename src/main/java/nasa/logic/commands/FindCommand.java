@@ -47,7 +47,7 @@ public class FindCommand extends Command {
         // TODO add the necessary implementation once model is done
         if (predicate instanceof NameContainsKeywordsPredicate) {
             model.updateFilteredModuleList(predicate);
-            return new CommandResult("SUCCESS MODULE DISPLAYED.");
+            return new CommandResult("Module listed.");
         } else if (predicate instanceof ActivityContainsKeyWordsPredicate) {
             model.updateFilteredActivityList(predicate);
             return new CommandResult(String.format(MESSAGE_ACTIVITY_LISTED_OVERVIEW,

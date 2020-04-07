@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.geometry.Insets?>
 <HBox alignment="CENTER" spacing="50" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-
-    <PieChart fx:id="pieChart" layoutX="50.0" title="Overall Statistics"
+    <PieChart fx:id="pieChart" layoutX="50.0" title="Percentage of activities by module"
               id="pieChart"/>
-    <BarChart fx:id="barChart" id="barChart">
+    <BarChart fx:id="barChart" id="barChart" title="Number of activities per module" legendVisible="false"
+    verticalGridLinesVisible="false" horizontalGridLinesVisible="false">
         <xAxis>
             <CategoryAxis fx:id="xAxis" side="BOTTOM" label="Modules"/>
         </xAxis>
