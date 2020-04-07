@@ -50,7 +50,35 @@ public class EventCard extends UiPart<Region> {
         endDate.setText("To " + activity.getDateTo().toString());
         note.setText(activity.getNote().toString());
         status.setText(activity.getStatus().toString());
-        priority.setText("Priority: " + activity.getPriority().toString());
+        priority.setText("Priority: " + activity.getPriority().toUiString());
+
+        setPriorityColour();
+    }
+
+    /**
+     * Sets font colour of the priority indicator.
+     */
+    private void setPriorityColour() {
+        switch (priority.getText()) {
+            case "!":
+                priority.setStyle("-fx-text-fill:#00bc6b;");
+                break;
+            case "!!":
+                priority.setStyle("-fx-text-fill:#85ba00;");
+                break;
+            case "!!!":
+                priority.setStyle("-fx-text-fill:#d0d000;");
+                break;
+            case "!!!!":
+                priority.setStyle("-fx-text-fill:#e1b400;");
+                break;
+            case "!!!!!":
+                priority.setStyle("-fx-text-fill:#e80303;");
+                break;
+            default:
+                priority.setStyle("");
+                break;
+        }
     }
 
     @Override
