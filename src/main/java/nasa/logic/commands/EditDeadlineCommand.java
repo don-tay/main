@@ -117,8 +117,9 @@ public class EditDeadlineCommand extends Command {
         Note updatedNote = editDeadlineDescriptor.getNote().orElse(deadlineToEdit.getNote());
         Priority updatedPriority = editDeadlineDescriptor.getPriority().orElse(deadlineToEdit.getPriority());
         Date updatedDueDate =  editDeadlineDescriptor.getDueDate().orElse(deadlineToEdit.getDueDate());
+        boolean updatedDoneStatus = editDeadlineDescriptor.getIsDone().orElse(deadlineToEdit.isDone());
 
-        return new Deadline(updatedName, updatedDateCreated, updatedNote, updatedPriority, updatedDueDate);
+        return new Deadline(updatedName, updatedDateCreated, updatedNote, updatedPriority, updatedDueDate, updatedDoneStatus);
 
     }
 
@@ -141,6 +142,7 @@ public class EditDeadlineCommand extends Command {
         private Note note;
         private Priority priority;
         private Date dueDate;
+        private boolean isDone;
 
         public EditDeadlineDescriptor() {}
 
@@ -153,6 +155,7 @@ public class EditDeadlineCommand extends Command {
             setNote(toCopy.note);
             setPriority(toCopy.priority);
             setDueDate(toCopy.dueDate);
+            setIsDone(toCopy.isDone);
         }
 
         /**
@@ -202,6 +205,14 @@ public class EditDeadlineCommand extends Command {
             return Optional.ofNullable(priority);
         }
 
+        public void setIsDone(boolean isDone) {
+            this.isDone = isDone;
+        }
+
+        public Optional<Boolean> getIsDone() {
+            return Optional.ofNullable(isDone);
+        }
+
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -217,8 +228,9 @@ public class EditDeadlineCommand extends Command {
             // state check
             EditDeadlineCommand.EditDeadlineDescriptor e = (EditDeadlineCommand.EditDeadlineDescriptor) other;
 
-            return getName().equals(e.getName()) && getDateCreated().equals(e.getDateCreated()) && getNote().equals(e.getNote())
-                    && getPriority().equals(e.getPriority()) && getDueDate().equals(e.getDueDate());
+            return getName().equals(e.getName()) && getDateCreated().equals(e.getDateCreated())
+                    && getNote().equals(e.getNote()) && getIsDone().equals(e.getIsDone())
+                    && getPriority().equals(e.getPriority()) && getDueDate().equals(e.getDueDate()) ;
         }
     }
 }

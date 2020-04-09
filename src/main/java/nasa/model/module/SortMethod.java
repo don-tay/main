@@ -22,7 +22,7 @@ public class SortMethod {
     public SortMethod(String method) {
         requireNonNull(method);
         checkArgument(isValidSortMethod(method), MESSAGE_CONSTRAINTS);
-        this.sortMethodString = method;
+        this.sortMethodString = generateSortMethodString(method);
         this.comparator = generateComparator(method);
     }
 
@@ -74,6 +74,13 @@ public class SortMethod {
         default:
             throw new IllegalStateException("Unexpected value: " + getSortMethodString());
         }
+    }
+
+    private String generateSortMethodString(String method) {
+        if (method.equals("date")) {
+            return "due date";
+        }
+        return method;
     }
 
     @Override

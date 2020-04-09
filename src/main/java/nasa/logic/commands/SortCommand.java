@@ -13,11 +13,11 @@ public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all activities according to the the method "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all deadlines according to the the method "
             + "specified.\nParameters: " + PREFIX_SORT_METHOD + "SORT METHOD \n"
             + "Example: " + COMMAND_WORD + " " + PREFIX_SORT_METHOD + "priority";;
 
-    public static final String MESSAGE_SUCCESS = "Sorted all activities";
+    public static final String MESSAGE_SUCCESS = "Sorted all deadlines";
 
     private final SortMethod sortMethod;
 
@@ -29,7 +29,7 @@ public class SortCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.sortDeadlineList(sortMethod);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS + " by " + sortMethod.toString());
     }
 
     @Override

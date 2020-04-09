@@ -41,11 +41,12 @@ public class Deadline extends Activity {
      * @param priority Priority
      * @param dueDate Date
      */
-    public Deadline(Name name, Date date, Note note, Priority priority, Date dueDate) {
+    public Deadline(Name name, Date date, Note note, Priority priority, Date dueDate, boolean isDone) {
         super(name, date, note);
         requireAllNonNull(priority, dueDate);
         this.priority = priority;
         this.dueDate = dueDate;
+        this.isDone = isDone;
     }
 
     /**
